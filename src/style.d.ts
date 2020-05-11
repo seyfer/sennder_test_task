@@ -1,5 +1,5 @@
 /* eslint-disable */
-import Vue from 'vue'
+import Vue from "vue";
 
 // Vue has the constructor type in types/vue.d.ts
 declare module 'vue/types/vue' {

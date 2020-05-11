@@ -1,15 +1,18 @@
 <template>
-  <Layout />
+    <AppLayout />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Layout from "./components/Layout.vue";
+    'use strict';
 
-@Component({
-    components: {
-        Layout,
-    },
-})
-export default class App extends Vue {}
+    import {Component, Vue} from "vue-property-decorator";
+    import AppLayout from "./components/AppLayout.vue";
+
+    @Component({
+        components: {
+            AppLayout,
+        },
+    })
+    export default class App extends Vue {
+    }
 </script>

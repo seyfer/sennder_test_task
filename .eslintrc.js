@@ -4,11 +4,9 @@ module.exports = {
         node: true,
     },
     extends: [
-        'plugin:vue/essential',
+        'plugin:vue/strongly-recommended',
         'eslint:recommended',
         '@vue/typescript/recommended',
-        // "@vue/prettier",
-        // "@vue/prettier/@typescript-eslint",
     ],
     parserOptions: {
         ecmaVersion: 2020,
@@ -28,6 +26,24 @@ module.exports = {
             },
         ],
         'indent': ['error', 4],
+        'vue/script-indent': ['error', 4, {
+            baseIndent: 1,
+            switchCase: 1,
+        }],
+        'vue/html-indent': ['error', 4, {
+            'attribute': 2,
+            'baseIndent': 1,
+            'closeBracket': 0,
+            'alignAttributesVertically': true,
+            'ignores': [],
+        }],
+        'vue/max-attributes-per-line': ['error', {
+            'singleline': 5,
+            'multiline': {
+                'max': 1,
+                'allowFirstLine': true,
+            },
+        }],
     },
     overrides: [
         {
@@ -37,6 +53,12 @@ module.exports = {
             ],
             env: {
                 jest: true,
+            },
+        },
+        {
+            'files': ['*.vue'],
+            'rules': {
+                'indent': 'off',
             },
         },
     ],
