@@ -1,7 +1,7 @@
 <template>
     <b-container fluid :class="$style.layout">
         <h1>
-            <b-icon-people />
+            <b-icon-people :class="$style.headerIcon" />
             Negotiation App
         </h1>
         <AppContainer />
@@ -28,5 +28,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding-top: 100px;
+    }
+
+    .headerIcon {
+        color: dodgerblue;
     }
 </style>
