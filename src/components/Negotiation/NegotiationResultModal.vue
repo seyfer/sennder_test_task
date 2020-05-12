@@ -8,7 +8,9 @@
         <template v-slot:modal-header>
             <slot name="header" />
         </template>
+
         <slot />
+
         <template v-slot:modal-footer="{ ok }">
             <b-button size="sm" variant="success" @click="ok">
                 OK
@@ -18,6 +20,8 @@
 </template>
 
 <script lang="ts">
+    'use strict';
+
     import {Component, Prop, Vue, Watch} from "vue-property-decorator";
 
     @Component

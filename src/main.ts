@@ -1,3 +1,5 @@
+'use strict';
+
 import "./assets/bootstrap.scss";
 import "./assets/global.scss";
 import Vue from "vue";

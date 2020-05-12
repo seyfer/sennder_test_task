@@ -7,13 +7,15 @@
             </slot>
             {{ title }}
         </template>
-        <b-card-body :class="$style.cardBody">
+        <b-card-body>
             <slot />
         </b-card-body>
     </b-tab>
 </template>
 
 <script lang="ts">
+    'use strict';
+
     import {Component, Prop, Vue} from "vue-property-decorator";
 
     @Component
@@ -22,9 +24,3 @@
         @Prop({required: false, type: Boolean, default: false}) readonly active!: boolean;
     }
 </script>
-
-<style module lang="scss">
-    .cardBody {
-
-    }
-</style>

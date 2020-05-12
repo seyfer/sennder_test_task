@@ -9,6 +9,8 @@
 </template>
 
 <script>
+    'use strict';
+
     import NegotiationApp from '@/components/Negotiation/NegotiationApp';
     export default {
         components: {NegotiationApp},

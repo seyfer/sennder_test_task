@@ -5,11 +5,13 @@
         </b-alert>
         <b-form @submit.prevent="onSubmit" :class="$style.salaryForm" inline v-if="!submitted">
             <b-form-group label="Salary:" label-for="salaryNumber" :class="$style.salaryFormGroup">
-                <b-form-input
-                        name="salaryNumber"
-                        type="number"
-                        v-model.number.trim.lazy="salaryNumber"
-                />
+                <b-input-group prepend="$">
+                    <b-form-input
+                            name="salaryNumber"
+                            type="number"
+                            v-model.number.trim.lazy="salaryNumber"
+                    />
+                </b-input-group>
                 <b-form-invalid-feedback :state="validation">
                     Please enter any number greater than 0
                 </b-form-invalid-feedback>
@@ -22,6 +24,8 @@
 </template>
 
 <script lang="ts">
+    'use strict';
+
     import {Component, Vue} from "vue-property-decorator";
 
     @Component
@@ -62,7 +66,7 @@
         flex-wrap: nowrap !important;
         margin: 10px 0;
 
-        div, input {
+        > div, input {
             width: 100% !important;
         }
 

@@ -31,10 +31,12 @@
 </template>
 
 <script lang="ts">
+    'use strict';
+
     import {Component, Vue} from "vue-property-decorator";
     import NegotiationAppTab from "@/components/Negotiation/NegotiationAppTab.vue";
     import SalaryForm from "@/components/Negotiation/SalaryForm.vue";
-    import {Mutation, namespace, State} from "vuex-class";
+    import {namespace} from "vuex-class";
     import NegotiationResultModal from "@/components/Negotiation/NegotiationResultModal.vue";
     import WeatherWidget from "@/components/Weather/WeatherWidget.vue";
     import {MODULE_NAME} from '@/store/module/Negotiation/NegotiationModule';

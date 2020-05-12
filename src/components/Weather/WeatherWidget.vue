@@ -5,7 +5,7 @@
             <b-spinner small variant="primary" label="Spinning" />
         </template>
         <template v-else>
-            By the way, there is a weather in {{ location }}:
+            By the way, here is the weather in {{ location }}:
             <strong>
                 <TemperatureView :temperature-unit="temperatureUnit" :temperature="temperature" />,
                 {{ weatherDescription }}

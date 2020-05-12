@@ -3,7 +3,7 @@
 import {MutationTree} from "vuex";
 import State from "@/store/module/Negotiation/State";
 
-const actions: MutationTree<State> = {
+const mutations: MutationTree<State> = {
     setEmployerProposedSalary(state, value: number) {
         state.employerProposedSalary = value;
     },
@@ -12,4 +12,4 @@ const actions: MutationTree<State> = {
     },
 };
 
-export default actions;
+export default mutations;

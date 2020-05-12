@@ -1,3 +1,5 @@
+'use strict';
+
 import {createLocalVue, shallowMount} from "@vue/test-utils";
 import AppLayout from "@/components/AppLayout.vue";
 import BootstrapVue, {IconsPlugin} from "bootstrap-vue";

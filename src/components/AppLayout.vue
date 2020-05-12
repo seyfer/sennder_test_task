@@ -9,6 +9,8 @@
 </template>
 
 <script lang="ts">
+    'use strict';
+
     import {Component, Vue} from "vue-property-decorator";
     import AppContainer from "@/components/AppContainer.vue";
 
