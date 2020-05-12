@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import NegotiationApp from '@/components/NegotiationApp';
+    import NegotiationApp from '@/components/Negotiation/NegotiationApp';
     export default {
         components: {NegotiationApp},
     };

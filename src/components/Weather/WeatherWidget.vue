@@ -7,7 +7,8 @@
         <template v-else>
             By the way, there is a weather in {{ location }}:
             <strong>
-                <TemperatureView :temperature-unit="temperatureUnit" :temperature="temperature" />, {{ weatherDescription }}
+                <TemperatureView :temperature-unit="temperatureUnit" :temperature="temperature" />
+                , {{ weatherDescription }}
             </strong>
         </template>
     </div>
@@ -17,7 +18,12 @@
     import {Component, Prop, Vue} from "vue-property-decorator";
     import {TemperatureUnit} from "@/components/Weather/constants";
     import TemperatureView from "@/components/Weather/TemperatureView.vue";
-    import WeatherApi from "@/components/Weather/WeatherApi";
+    import {namespace} from "vuex-class";
+    import {isEmpty} from 'lodash';
+    import {MODULE_NAME} from "@/store/module/Weather/WeatherModule";
+
+    const weatherStore = namespace(MODULE_NAME);
+
     @Component({
         components: {TemperatureView},
     })
@@ -29,35 +35,23 @@
             default: TemperatureUnit.CELSIUS,
         }) readonly temperatureUnit!: TemperatureUnit;
 
-        //mock
-        weatherModel: {
+        @weatherStore.Action('loadWeatherByLocation') loadWeatherByLocation!: (location: string) => Promise<any>;
+        @weatherStore.State('weatherModel') weatherModel!: {
             main: {
-                temp: 280.32;
+                temp: number;
             };
             weather: [
                 {
-                    id: 300;
-                    main: "Drizzle";
-                    description: "light intensity drizzle";
-                    icon: "09d";
+                    id: number;
+                    main: string;
+                    description: string;
+                    icon: string;
                 },
             ];
-        } | undefined = {
-            main: {
-                temp: 280.32,
-            },
-            weather: [
-                {
-                    id: 300,
-                    main: "Drizzle",
-                    description: "light intensity drizzle",
-                    icon: "09d",
-                },
-            ],
         };
 
         get ready() {
-            return this.weatherModel !== undefined;
+            return !isEmpty(this.weatherModel);
         }
 
         get temperature() {
@@ -68,12 +62,9 @@
             return this.weatherModel?.weather?.[0]?.main ?? undefined;
         }
 
-        async mounted() {
-            try {
-                const response = await (new WeatherApi()).loadWeatherByLocation(this.location);
-                console.log(response);
-            } catch (e) {
-                console.log(e);
+        mounted() {
+            if (isEmpty(this.weatherModel)) {
+                this.loadWeatherByLocation(this.location);
             }
         }
     }

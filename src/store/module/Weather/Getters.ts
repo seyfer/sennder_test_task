@@ -1,7 +1,7 @@
 'use strict';
 
 import {GetterTree} from "vuex";
-import State from "@/store/State";
+import State from "@/store/module/Weather/State";
 
 const actions: GetterTree<State, any> = {};
 

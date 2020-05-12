@@ -1,7 +1,7 @@
 'use strict';
 
 import {MutationTree} from "vuex";
-import State from "@/store/State";
+import State from "@/store/module/Negotiation/State";
 
 const actions: MutationTree<State> = {
     setEmployerProposedSalary(state, value: number) {

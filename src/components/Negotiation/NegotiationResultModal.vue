@@ -50,5 +50,4 @@
             min-width: 100px;
         }
     }
-
 </style>

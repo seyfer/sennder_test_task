@@ -1,26 +1,18 @@
 'use strict';
 
-import Vuex, {ActionTree, GetterTree, Module, MutationTree, Store, StoreOptions} from 'vuex';
-import Getters from './Getters';
-import Mutations from './Mutations';
-import Actions from './Actions';
+import Vuex, {Store, StoreOptions} from 'vuex';
 import Vue from "vue";
-import State from './State';
+import NegotiationModule from './module/Negotiation/NegotiationModule';
+import WeatherModule from './module/Weather/WeatherModule';
 
 Vue.use(Vuex);
 
-const state = new State();
-const getters: GetterTree<State, any> = Getters;
-const mutations: MutationTree<State> = Mutations;
-const actions: ActionTree<State, any> = Actions;
-
-const storeOptions: StoreOptions<any> & Module<State, any> = {
+const storeOptions: StoreOptions<any> = {
     strict: process.env.NODE_ENV !== 'production',
-    namespaced: true,
-    state,
-    getters,
-    mutations,
-    actions,
+    modules: {
+        NegotiationModule,
+        WeatherModule,
+    },
 };
 
 const store = new Store(storeOptions);

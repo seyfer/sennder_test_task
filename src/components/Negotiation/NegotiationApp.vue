@@ -32,11 +32,14 @@
 
 <script lang="ts">
     import {Component, Vue} from "vue-property-decorator";
-    import NegotiationAppTab from "@/components/NegotiationAppTab.vue";
-    import SalaryForm from "@/components/SalaryForm.vue";
-    import {Mutation, State} from "vuex-class";
-    import NegotiationResultModal from "@/components/NegotiationResultModal.vue";
+    import NegotiationAppTab from "@/components/Negotiation/NegotiationAppTab.vue";
+    import SalaryForm from "@/components/Negotiation/SalaryForm.vue";
+    import {Mutation, namespace, State} from "vuex-class";
+    import NegotiationResultModal from "@/components/Negotiation/NegotiationResultModal.vue";
     import WeatherWidget from "@/components/Weather/WeatherWidget.vue";
+    import {MODULE_NAME} from '@/store/module/Negotiation/NegotiationModule';
+
+    const negotiationStore = namespace(MODULE_NAME);
 
     @Component({
         components: {WeatherWidget, NegotiationResultModal, SalaryForm, NegotiationAppTab},
@@ -45,10 +48,10 @@
         tabIndex = 0;
         renderComponent = true;
 
-        @State('employerProposedSalary') employerProposedSalary!: number;
-        @State('employeeRequestedSalary') employeeRequestedSalary!: number;
-        @Mutation('setEmployerProposedSalary') setEmployerProposedSalary!: (value: number) => void;
-        @Mutation('setEmployeeRequestedSalary') setEmployeeRequestedSalary!: (value: number) => void;
+        @negotiationStore.State('employerProposedSalary') employerProposedSalary!: number;
+        @negotiationStore.State('employeeRequestedSalary') employeeRequestedSalary!: number;
+        @negotiationStore.Mutation('setEmployerProposedSalary') setEmployerProposedSalary!: (value: number) => void;
+        @negotiationStore.Mutation('setEmployeeRequestedSalary') setEmployeeRequestedSalary!: (value: number) => void;
 
         onEmployerSalarySubmit(salary: number) {
             this.setEmployerProposedSalary(salary);
