@@ -20,8 +20,8 @@
             <h5 slot="header" :class="negotiationSuccess ? 'text-success' : 'text-danger'">
                 {{ negotiationSuccess ? 'Success!' : 'Failure!' }}
             </h5>
-            <div>Maximum offer was: {{ employerProposedSalary }}</div>
-            <div>Minimum expected salary was: {{ employeeRequestedSalary }}</div>
+            <div>Maximum offer was: <strong>{{ employerProposedSalary }}</strong></div>
+            <div>Minimum expected salary was: <strong>{{ employeeRequestedSalary }}</strong></div>
 
             <div :class="$style.weatherContainer">
                 <WeatherWidget location="London" />
