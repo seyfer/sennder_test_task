@@ -1,6 +1,7 @@
 'use strict';
 
 import Axios, {AxiosInstance} from 'axios';
+import WeatherPayload from "@/components/Weather/@types/weather";
 
 export default class WeatherApi {
     apiKey = '98baa908d5b96e101af37a359fe39bb3';
@@ -22,7 +23,7 @@ export default class WeatherApi {
         });
     }
 
-    async loadWeatherByLocation(location: string): Promise<any> {
+    async loadWeatherByLocation(location: string): Promise<{ data: WeatherPayload }> {
         return this.axios.get('', {params: {q: location, appid: this.apiKey}});
     }
 }

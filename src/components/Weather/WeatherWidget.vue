@@ -7,8 +7,8 @@
         <template v-else>
             By the way, there is a weather in {{ location }}:
             <strong>
-                <TemperatureView :temperature-unit="temperatureUnit" :temperature="temperature" />
-                , {{ weatherDescription }}
+                <TemperatureView :temperature-unit="temperatureUnit" :temperature="temperature" />,
+                {{ weatherDescription }}
             </strong>
         </template>
     </div>
@@ -21,6 +21,7 @@
     import {namespace} from "vuex-class";
     import {isEmpty} from 'lodash';
     import {MODULE_NAME} from "@/store/module/Weather/WeatherModule";
+    import WeatherModel from "@/components/Weather/WeatherModel";
 
     const weatherStore = namespace(MODULE_NAME);
 
@@ -35,31 +36,19 @@
             default: TemperatureUnit.CELSIUS,
         }) readonly temperatureUnit!: TemperatureUnit;
 
-        @weatherStore.Action('loadWeatherByLocation') loadWeatherByLocation!: (location: string) => Promise<any>;
-        @weatherStore.State('weatherModel') weatherModel!: {
-            main: {
-                temp: number;
-            };
-            weather: [
-                {
-                    id: number;
-                    main: string;
-                    description: string;
-                    icon: string;
-                },
-            ];
-        };
+        @weatherStore.Action('loadWeatherByLocation') loadWeatherByLocation!: (location: string) => Promise<WeatherModel>;
+        @weatherStore.State('weatherModel') weatherModel!: WeatherModel;
 
         get ready() {
             return !isEmpty(this.weatherModel);
         }
 
         get temperature() {
-            return this.weatherModel?.main.temp ?? undefined;
+            return this.weatherModel?.temperature ?? undefined;
         }
 
         get weatherDescription() {
-            return this.weatherModel?.weather?.[0]?.main ?? undefined;
+            return this.weatherModel?.shortDescription ?? undefined;
         }
 
         mounted() {
