@@ -13,10 +13,19 @@
             </b-tabs>
         </b-card>
 
-        <NegotiationResultModal :show-modal="salariesAreReady" @onClosedModal="onClosedModal">
-            Result: {{ negotiationSuccess ? 'Success!' : 'Failure!' }}
-            Proposed: {{ employerProposedSalary }}
-            Requested: {{ employeeRequestedSalary }}
+        <NegotiationResultModal
+                :show-modal="salariesAreReady"
+                @onClosedModal="onClosedModal"
+        >
+            <h5 slot="header" :class="negotiationSuccess ? 'text-success' : 'text-danger'">
+                {{ negotiationSuccess ? 'Success!' : 'Failure!' }}
+            </h5>
+            <div>Maximum offer was: {{ employerProposedSalary }}</div>
+            <div>Minimum expected salary was: {{ employeeRequestedSalary }}</div>
+
+            <div :class="$style.weatherContainer">
+                <WeatherWidget location="London" />
+            </div>
         </NegotiationResultModal>
     </div>
 </template>
@@ -27,9 +36,10 @@
     import SalaryForm from "@/components/SalaryForm.vue";
     import {Mutation, State} from "vuex-class";
     import NegotiationResultModal from "@/components/NegotiationResultModal.vue";
+    import WeatherWidget from "@/components/Weather/WeatherWidget.vue";
 
     @Component({
-        components: {NegotiationResultModal, SalaryForm, NegotiationAppTab},
+        components: {WeatherWidget, NegotiationResultModal, SalaryForm, NegotiationAppTab},
     })
     export default class NegotiationApp extends Vue {
         tabIndex = 0;
@@ -86,5 +96,9 @@
 <style module lang="scss">
     .cardBody {
         background-color: red;
+    }
+
+    .weatherContainer {
+        margin: 20px auto;
     }
 </style>

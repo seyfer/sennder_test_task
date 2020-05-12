@@ -3,10 +3,17 @@
              centered
              title="Negotiation Result Modal"
              hide-header-close
-             hide-footer
              @hidden="onClosedModal"
     >
+        <template v-slot:modal-header>
+            <slot name="header" />
+        </template>
         <slot />
+        <template v-slot:modal-footer="{ ok }">
+            <b-button size="sm" variant="success" @click="ok">
+                OK
+            </b-button>
+        </template>
     </b-modal>
 </template>
 
@@ -33,6 +40,15 @@
     }
 </script>
 
-<style module lang="scss">
+<style lang="scss">
+    .modal-dialog {
+        .modal-header {
+            justify-content: center;
+        }
+
+        .btn-success {
+            min-width: 100px;
+        }
+    }
 
 </style>
