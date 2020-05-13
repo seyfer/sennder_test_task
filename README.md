@@ -15,6 +15,11 @@ yarn serve
 yarn build
 ```
 
+### Run production dist locally
+```
+yarn serve:prod
+```
+
 ### Run your unit tests
 ```
 yarn test:unit

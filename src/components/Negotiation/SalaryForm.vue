@@ -12,7 +12,7 @@
                             v-model.number.trim.lazy="salaryNumber"
                     />
                 </b-input-group>
-                <b-form-invalid-feedback :state="validation">
+                <b-form-invalid-feedback :state="!(submitBtnClicked && !isValid)">
                     Please enter any number greater than 0
                 </b-form-invalid-feedback>
             </b-form-group>
@@ -26,23 +26,32 @@
 <script lang="ts">
     'use strict';
 
-    import {Component, Vue} from "vue-property-decorator";
+    import {Component, Vue, Watch} from "vue-property-decorator";
 
     @Component
     export default class SalaryForm extends Vue {
-        salaryNumber = 1;
+        salaryNumber = 0;
         submitted = false;
+        submitBtnClicked = false;
 
         onSubmit() {
-            if (this.salaryNumber <= 0) {
-                return;
-            }
+            this.submitBtnClicked = true;
 
-            this.submitted = true;
-            this.$emit('onSalarySubmit', this.salaryNumber);
+            if (this.isValid) {
+                this.submitted = true;
+                this.$emit('onSalarySubmit', this.salaryNumber);
+            }
         }
 
-        get validation() {
+        @Watch('salaryNumber', {deep: true})
+        async onSalaryNumberChange(value: number) {
+            if (value < 0) {
+                await this.$nextTick();
+                this.salaryNumber = 0;
+            }
+        }
+
+        get isValid() {
             return this.salaryNumber > 0;
         }
     }

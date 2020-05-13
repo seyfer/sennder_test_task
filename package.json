@@ -4,6 +4,7 @@
     "private": true,
     "scripts": {
         "serve": "vue-cli-service serve",
+        "serve:prod": "http-server dist/",
         "build": "vue-cli-service build",
         "test:unit": "vue-cli-service test:unit",
         "test:e2e": "vue-cli-service test:e2e",
@@ -37,6 +38,7 @@
         "@vue/test-utils": "1.0.0-beta.31",
         "eslint": "^6.7.2",
         "eslint-plugin-vue": "^6.2.2",
+        "http-server": "^0.12.3",
         "lint-staged": "^9.5.0",
         "node-sass": "^4.12.0",
         "sass-loader": "^8.0.2",
