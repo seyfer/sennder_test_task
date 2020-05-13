@@ -43,6 +43,12 @@ describe('Negotiation', () => {
         cy.get('.tab-pane.active.card-body input').type(11);
         cy.get('.tab-pane.active.card-body .btn-primary').click();
 
+        //additionally check that submitted form message shown
+        cy.get('.nav-tabs .nav-item:first-child').click();
+        cy.get('.tab-pane.active.card-body .alert-success').should('be.visible')
+            .contains('This form was already submitted');
+        cy.get('.nav-tabs .nav-item:last-child').click();
+
         cy.get('a[aria-selected="true"]').contains('Employee-Tab');
         cy.get('.tab-pane.active.card-body input').type(12);
         cy.get('.tab-pane.active.card-body .btn-primary').click();
