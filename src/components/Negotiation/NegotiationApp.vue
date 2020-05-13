@@ -33,6 +33,7 @@
 <script lang="ts">
     'use strict';
 
+    import {BIcon, BIconBuilding, BIconBriefcase} from 'bootstrap-vue';
     import {Component, Vue} from "vue-property-decorator";
     import NegotiationAppTab from "@/components/Negotiation/NegotiationAppTab.vue";
     import SalaryForm from "@/components/Negotiation/SalaryForm.vue";
@@ -44,7 +45,10 @@
     const negotiationStore = namespace(MODULE_NAME);
 
     @Component({
-        components: {WeatherWidget, NegotiationResultModal, SalaryForm, NegotiationAppTab},
+        components: {
+            WeatherWidget, NegotiationResultModal, SalaryForm, NegotiationAppTab,
+            BIcon, BIconBuilding, BIconBriefcase,
+        },
     })
     export default class NegotiationApp extends Vue {
         tabIndex = 0;

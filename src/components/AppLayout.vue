@@ -13,9 +13,10 @@
 
     import {Component, Vue} from "vue-property-decorator";
     import AppContainer from "@/components/AppContainer.vue";
+    import {BIcon, BIconPeople} from 'bootstrap-vue';
 
     @Component({
-        components: {AppContainer},
+        components: {AppContainer, BIcon, BIconPeople},
     })
     export default class AppLayout extends Vue {
     }

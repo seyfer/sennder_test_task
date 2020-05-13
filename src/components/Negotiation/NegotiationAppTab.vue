@@ -17,8 +17,12 @@
     'use strict';
 
     import {Component, Prop, Vue} from "vue-property-decorator";
+    import AppContainer from "@/components/AppContainer.vue";
+    import {BIcon, BIconApp} from "bootstrap-vue";
 
-    @Component
+    @Component({
+        components: {AppContainer, BIcon, BIconApp},
+    })
     export default class NegotiationAppTab extends Vue {
         @Prop({required: true, type: String}) readonly title!: string;
         @Prop({required: false, type: Boolean, default: false}) readonly active!: boolean;

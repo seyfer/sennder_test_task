@@ -19,7 +19,7 @@
     import {TemperatureUnit} from "@/components/Weather/constants";
     import TemperatureView from "@/components/Weather/TemperatureView.vue";
     import {namespace} from "vuex-class";
-    import {isEmpty} from 'lodash';
+    import isEmpty from 'lodash/fp/isEmpty';
     import {MODULE_NAME} from "@/store/module/Weather/WeatherModule";
     import WeatherModel from "@/components/Weather/WeatherModel";
 
