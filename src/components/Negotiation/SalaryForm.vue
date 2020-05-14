@@ -16,7 +16,7 @@
                     Please enter any number greater than 0
                 </b-form-invalid-feedback>
             </b-form-group>
-            <b-button type="submit" variant="primary" :class="$style.salaryFormButton">
+            <b-button type="submit" @click="onSubmitClick" variant="primary" :class="$style.salaryFormButton">
                 Submit
             </b-button>
         </b-form>
@@ -34,9 +34,11 @@
         submitted = false;
         submitBtnClicked = false;
 
-        onSubmit() {
+        onSubmitClick() {
             this.submitBtnClicked = true;
+        }
 
+        onSubmit() {
             if (this.isValid) {
                 this.submitted = true;
                 this.$emit('onSalarySubmit', this.salaryNumber);

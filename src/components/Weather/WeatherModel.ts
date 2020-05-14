@@ -1,6 +1,6 @@
 'use strict';
 
-import WeatherPayload from "@/components/Weather/@types/weather";
+import WeatherPayload from "@/components/Weather/WeatherPayload";
 
 export default class WeatherModel {
     temperature: number;

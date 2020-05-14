@@ -7,6 +7,7 @@
         "serve:prod": "http-server dist/",
         "build": "vue-cli-service build",
         "test:unit": "vue-cli-service test:unit",
+        "test:unit:watch": "vue-cli-service test:unit --watch",
         "test:e2e": "vue-cli-service test:e2e",
         "lint": "vue-cli-service lint"
     },
@@ -35,7 +36,9 @@
         "@vue/cli-plugin-vuex": "~4.3.0",
         "@vue/cli-service": "~4.3.0",
         "@vue/eslint-config-typescript": "^5.0.2",
+        "@vue/server-test-utils": "^1.0.2",
         "@vue/test-utils": "1.0.0-beta.31",
+        "axios-mock-adapter": "^1.18.1",
         "eslint": "^6.7.2",
         "eslint-plugin-vue": "^6.2.2",
         "http-server": "^0.12.3",
@@ -43,6 +46,7 @@
         "node-sass": "^4.12.0",
         "sass-loader": "^8.0.2",
         "typescript": "~3.8.3",
+        "vue-server-renderer": "^2.6.11",
         "vue-template-compiler": "^2.6.11",
         "webpack-bundle-analyzer": "^3.7.0"
     },

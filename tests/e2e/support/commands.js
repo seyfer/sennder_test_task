@@ -25,3 +25,22 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+
+import weatherLondon from '../../fixtures/weather_london.json';
+
+Cypress.Commands.add('submitSalary', (salary, tabName) => {
+    cy.get('a[aria-selected="true"]').contains(tabName);
+    cy.get('.tab-pane.active.card-body input').type(salary);
+    cy.get('.tab-pane.active.card-body .btn-primary').click();
+});
+
+Cypress.Commands.add('mockWeatherRequest', () => {
+    cy.server();
+    cy.route({
+        method: 'GET',
+        url: /openweathermap/,
+        response: weatherLondon,
+        delay: 500,
+    });
+});

@@ -1,5 +1,5 @@
 <template>
-    <span>{{ temperatureView[0] }}{{ temperatureView[1] }}</span>
+    <span id="weather-temperature-view">{{ temperatureView[0] }}{{ temperatureView[1] }}</span>
 </template>
 
 <script lang="ts">
@@ -14,6 +14,7 @@
             type: String,
             required: true,
         }) readonly temperatureUnit!: TemperatureUnit;
+        //always in Kelvin
         @Prop({
             type: Number,
             required: true,

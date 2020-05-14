@@ -17,4 +17,4 @@ const storeOptions: StoreOptions<any> = {
 
 const store = new Store(storeOptions);
 
-export default store as Store<any>;
+export default store;
