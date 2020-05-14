@@ -1,6 +1,6 @@
 import TemperatureView from "@/components/Weather/TemperatureView.vue";
 import {TemperatureUnit} from "@/components/Weather/constants";
-import {render} from '@vue/server-test-utils';
+import {shallowMount} from "@vue/test-utils";
 
 describe("TemperatureView", () => {
     it("renders", async () => {
@@ -11,7 +11,7 @@ describe("TemperatureView", () => {
         };
 
         for (const [unit, view] of Object.entries(unitToViewMap)) {
-            const wrapper = await render(TemperatureView, {
+            const wrapper = await shallowMount(TemperatureView, {
                 propsData: {
                     temperatureUnit: unit,
                     temperature: 280.32,
