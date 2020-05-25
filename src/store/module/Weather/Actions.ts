@@ -5,7 +5,7 @@ import State from "@/store/module/Weather/State";
 import WeatherApi from "@/components/Weather/WeatherApi";
 import WeatherModel from "@/components/Weather/WeatherModel";
 
-const weatherApi = new WeatherApi();
+const weatherApi = new WeatherApi(true, process.env.VUE_APP_WEATHER_API_KEY);
 
 const actions: ActionTree<State, any> = {
     async loadWeatherByLocation({commit}, location: string) {

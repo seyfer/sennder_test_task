@@ -1,32 +1,22 @@
 'use strict';
 
-import Axios, {AxiosInstance} from 'axios';
+import {AxiosInstance} from 'axios';
 import WeatherPayload from "@/components/Weather/WeatherPayload";
+import WeatherAxios from "@/components/Weather/WeatherAxios";
 
 export default class WeatherApi {
-    private readonly apiKey: string = '98baa908d5b96e101af37a359fe39bb3';
     private axios: AxiosInstance;
-    private weatherBaseUrl = 'https://samples.openweathermap.org/data/2.5/weather';
-    public readonly corsProxy = 'https://cors-anywhere.herokuapp.com/';
+    private readonly apiKey: string = '';
 
     constructor(
         withCorsProxy = true,
         apiKey: string | null = null,
     ) {
-        const baseURL = withCorsProxy
-            ? this.corsProxy + this.weatherBaseUrl
-            : this.weatherBaseUrl;
-
-        this.axios = Axios.create({
-            baseURL,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-
         if (apiKey) {
             this.apiKey = apiKey;
         }
+
+        this.axios = WeatherAxios.getInstance(withCorsProxy);
     }
 
     set client(newClient) {
